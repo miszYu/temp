@@ -11,6 +11,7 @@ public class MyConfiguration {
     //@Bean後不特別指定name，則預設會以方法名稱當作bean name
     @Bean("hpPrinter")
     public Printer getHpPrinte() {
+
         return new HpPrinter();
     }
 }
