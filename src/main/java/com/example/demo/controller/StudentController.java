@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.model.clazz.Store;
 import com.example.demo.model.clazz.Student;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/test")
-public class MyController {
+@RequestMapping("/student")
+public class StudentController {
 
     @RequestMapping("/store")
     public Store product(){

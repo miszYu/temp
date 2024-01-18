@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/test")
-public class MyController {
+@RequestMapping("/print")
+public class PrinterController {
 
     @Autowired
     @Qualifier("canonPrinter")
@@ -22,7 +22,7 @@ public class MyController {
 
     @RequestMapping("/hpPrinter")
     public String hpPrinter(){
-        //http://localhost:8080/test/hpPrinter
+        //http://localhost:8080/print/hpPrinter
         msg = "HpPrinter Say : Hello World!";
         hpPrinter.print(msg);
 
@@ -31,7 +31,7 @@ public class MyController {
 
     @RequestMapping("/canonPrinter")
     public String canonPrinter(){
-        //http://localhost:8080/test/canonPrinter
+        //http://localhost:8080/print/canonPrinter
         msg = "CanonPrinter Say : Hello World!";
         canonPrinter.print(msg);
 

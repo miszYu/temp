@@ -1,12 +1,12 @@
-package com.example.demo;
+package com.example.demo.model.impl;
 
+import com.example.demo.model.Printer;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
 
-public class HpPrinter implements  Printer{
+public class HpPrinter implements Printer {
 
     private int count;
 

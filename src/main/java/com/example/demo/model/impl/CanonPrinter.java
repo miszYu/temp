@@ -1,5 +1,6 @@
-package com.example.demo;
+package com.example.demo.model.impl;
 
+import com.example.demo.model.Printer;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 

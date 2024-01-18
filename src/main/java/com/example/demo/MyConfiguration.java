@@ -1,14 +1,16 @@
 package com.example.demo;
 
-import org.springframework.beans.factory.annotation.Configurable;
+import com.example.demo.model.Printer;
+import com.example.demo.model.impl.HpPrinter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class MyCconfiguration {
+public class MyConfiguration {
 
+    //@Bean後不特別指定name，則預設會以方法名稱當作bean name
     @Bean("hpPrinter")
-    public Printer hpPrinte() {
+    public Printer getHpPrinte() {
         return new HpPrinter();
     }
 }
