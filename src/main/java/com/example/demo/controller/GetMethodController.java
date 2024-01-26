@@ -1,20 +1,24 @@
 package com.example.demo.controller;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.google.gson.JsonObject;
-import org.aspectj.apache.bcel.classfile.Method;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+@Tag(name = "GetMethodController")
 @RestController
-@RequestMapping("/mytest")
-public class MyController {
+@RequestMapping("/get_method")
+public class GetMethodController {
 
-
-    @RequestMapping( path = "/test01", method = {RequestMethod.GET, RequestMethod.POST})
-    public String test01(@RequestParam Integer id,
+    @Operation(summary = "RequestMethod.GET, @RequestParam取值範例")
+    @ApiResponse(responseCode = "200", description = "請求成功")
+    @ApiResponse(responseCode = "404", description = "找不到文件")
+    @RequestMapping( path = "/my_get", method = {RequestMethod.GET})
+    public String my_get(@RequestParam Integer id,
                          @RequestParam(defaultValue = "Judy") String name,
                          @RequestParam(required = false) Integer age){
         //http://localhost:8080/mytest/test01

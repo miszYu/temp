@@ -4,6 +4,7 @@ import com.example.demo.model.Printer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -20,7 +21,7 @@ public class PrinterController {
 
     private String msg;
 
-    @RequestMapping("/hpPrinter")
+    @RequestMapping(path = "/hpPrinter", method = {RequestMethod.GET, RequestMethod.POST})
     public String hpPrinter(){
         //http://localhost:8080/print/hpPrinter
         msg = "HpPrinter Say : Hello World!";
@@ -29,7 +30,7 @@ public class PrinterController {
         return msg;
     }
 
-    @RequestMapping("/canonPrinter")
+    @RequestMapping(path = "/canonPrinter", method = {RequestMethod.GET, RequestMethod.POST})
     public String canonPrinter(){
         //http://localhost:8080/print/canonPrinter
         msg = "CanonPrinter Say : Hello World!";
