@@ -5,6 +5,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+//使用@ControllerAdvice與@ExceptionHandler，共用錯誤時的處理方法
+//@ControllerAdvice使用AOP功能實作
+
 @ControllerAdvice
 public class MyExceptionHandler {
     private String errMsg;

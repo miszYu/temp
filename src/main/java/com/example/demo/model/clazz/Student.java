@@ -3,8 +3,10 @@ package com.example.demo.model.clazz;
 import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+//使用@NotNull、@NotBlank、@NotEmpty，搭配@Validated、@Valid進行快速驗證
 
 public class Student {
 

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+//restFUL API，簡易範例。示範使用api呼叫不同功能。
+
 @RestController
 @RequestMapping("/print")
 public class PrinterController {

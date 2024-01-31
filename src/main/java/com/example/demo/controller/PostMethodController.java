@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+//restFUL API，post範例。使用@RequestBody取得body內的值
+
 @RestController
 @RequestMapping("/post_method")
 public class PostMethodController {

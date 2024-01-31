@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+//restFUL API，header範例。使用@RequestHeader從header取值。
+
 @RestController
 @RequestMapping(path="/header", method = {RequestMethod.GET, RequestMethod.POST})
 public class HeaderController {

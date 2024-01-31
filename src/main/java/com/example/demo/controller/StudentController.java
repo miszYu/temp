@@ -12,6 +12,9 @@ import javax.validation.constraints.Min;
 import java.util.ArrayList;
 import java.util.List;
 
+//restFUL API，綜合範例。使用POST、GET、PUT、DELETE對應Create、Read、Update、Delete操作，用ResponseEntity設定httpCode並回傳數值。
+//使用@Validated、@Valid，搭配model中的@NotNull、@NotBlank、@NotEmpty進行快速驗證
+
 @RestController
 @Validated
 @RequestMapping("/student")

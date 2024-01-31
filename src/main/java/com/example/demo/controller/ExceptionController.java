@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+//拋出錯誤時的處理，使用MyExceptionHandler.java共用拋出錯誤時的處理
+
 @RestController
 @RequestMapping("/exception")
 public class ExceptionController {

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+//restFUL API，GET方法範例。使用@RequestParam取值。
+
 @Tag(name = "GetMethodController")
 @RestController
 @RequestMapping("/get_method")
