@@ -1,6 +1,6 @@
-package com.example.demo.model.impl;
+package com.example.demo.model.bo.impl;
 
-import com.example.demo.model.Printer;
+import com.example.demo.model.bo.Printer;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.annotation.PostConstruct;

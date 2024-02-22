@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.clazz.Student;
+import com.example.demo.model.dto.Student;
 import com.google.gson.JsonObject;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

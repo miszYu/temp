@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.clazz.Store;
-import com.example.demo.model.clazz.Student;
+import com.example.demo.model.dto.Store;
+import com.example.demo.model.dto.Student;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;

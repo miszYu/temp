@@ -1,21 +1,16 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.clazz.Student;
+import com.example.demo.model.dto.Student;
 
+import com.example.demo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-//NamedParameterJdbcTemplate範例
+//練習NamedParameterJdbcTemplate的使用
 
 @Validated
 @RestController
@@ -23,35 +18,39 @@ import java.util.Map;
 public class JdbcController {
 
     @Autowired
-    private NamedParameterJdbcTemplate jdbcTemplate;
+    private StudentService studentService;
 
-    @PostMapping("/addStudent")
-    public String addStudent(@RequestBody Student student){
-        String sql = "INSERT INTO STUDENT (name) VALUE (:name)";
+    @PostMapping("/student")
+    public String createStudent(@RequestBody Student student){
+        Student stu = studentService.insertByName(student);
 
-        String name = student.getName();
-
-        Map<String, Object> map = new HashMap<>();
-        map.put("name", name);
-
-        KeyHolder keyHolder = new GeneratedKeyHolder();
-
-        jdbcTemplate.update(sql, new MapSqlParameterSource(map), keyHolder);
-
-        Integer id = keyHolder.getKey().intValue();
+        Integer id = stu.getId();
+        String name = stu.getName();
 
         return "已新增Student， id = " + id + ", name = " + name;
     }
 
-    @DeleteMapping("/deleteStudent/{id}")
+    @PostMapping("/batch")
+    public String createStudents(@RequestBody List<Student> students ){
+        studentService.insertBatchByNames(students);
+
+        return "已新增 batch insert ";
+    }
+
+    @DeleteMapping("/student/{id}")
     public String deleteStudent(@PathVariable @Valid Integer id){
-        String sql = "DELETE FROM STUDENT WHERE ID = :id";
-
-        Map<String, Object> map = new HashMap<>();
-        map.put("id", id);
-
-        jdbcTemplate.update(sql, map);
+        studentService.deleteById(id);
 
         return "已刪除Student，id = " + id ;
+    }
+
+    @GetMapping("/students")
+    public List<Student> selectStudent(){
+        return studentService.findAll();
+    }
+
+    @GetMapping("/student/{id}")
+    public Student selectStudent(@PathVariable @Valid Integer id){
+        return studentService.findById(id);
     }
 }

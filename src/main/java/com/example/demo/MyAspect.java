@@ -11,17 +11,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyAspect {
 
-    @Before("execution(* com.example.demo.model.impl.HpPrinter.*(..))")
+    @Before("execution(* com.example.demo.model.bo.impl.HpPrinter.*(..))")
     public void before(){
         System.out.println("I am @Before >> before");
     }
 
-    @After("execution(* com.example.demo.model.impl.HpPrinter.*(..))")
+    @After("execution(* com.example.demo.model.bo.impl.HpPrinter.*(..))")
     public void after(){
         System.out.println("I am @After >> after");
     }
 
-    @Around("execution(* com.example.demo.model.impl.CanonPrinter.*(..))")
+    @Around("execution(* com.example.demo.model.bo.impl.CanonPrinter.*(..))")
     public Object around(ProceedingJoinPoint pip) throws Throwable{
         System.out.println("I am @Around >> before");
         Object obj = pip.proceed();

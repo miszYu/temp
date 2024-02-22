@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Printer;
+import com.example.demo.model.bo.Printer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
