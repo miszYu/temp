@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.dto.Product;
 import com.example.demo.model.dto.Student;
 
+import com.example.demo.service.ProductService;
 import com.example.demo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -19,6 +21,9 @@ public class JdbcController {
 
     @Autowired
     private StudentService studentService;
+
+    @Autowired
+    private ProductService productService;
 
     @PostMapping("/student")
     public String createStudent(@RequestBody Student student){
@@ -53,4 +58,10 @@ public class JdbcController {
     public Student selectStudent(@PathVariable @Valid Integer id){
         return studentService.findById(id);
     }
+
+    @GetMapping("/product/{no}")
+    public Product getProduct(@PathVariable @Valid Integer no){
+        return productService.findByNo(no);
+    }
+
 }

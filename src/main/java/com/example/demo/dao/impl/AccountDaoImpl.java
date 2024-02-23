@@ -2,6 +2,7 @@ package com.example.demo.dao.impl;
 
 import com.example.demo.dao.AccountDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +13,8 @@ import java.util.Map;
 public class AccountDaoImpl implements AccountDao {
 
     @Autowired
-    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+    @Qualifier("myjdbcJdbcTemplate")
+    private NamedParameterJdbcTemplate myjdbcJdbcTemplate;
 
     @Override
     public void decreaseMoney(Integer id, Integer money) {
@@ -22,7 +24,7 @@ public class AccountDaoImpl implements AccountDao {
         map.put("id", id);
         map.put("money", money);
 
-        namedParameterJdbcTemplate.update(sql, map);
+        myjdbcJdbcTemplate.update(sql, map);
     }
 
     @Override
@@ -33,6 +35,6 @@ public class AccountDaoImpl implements AccountDao {
         map.put("id", id);
         map.put("money", money);
 
-        namedParameterJdbcTemplate.update(sql, map);
+        myjdbcJdbcTemplate.update(sql, map);
     }
 }

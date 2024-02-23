@@ -4,6 +4,7 @@ import com.example.demo.dao.StudentDao;
 import com.example.demo.model.dto.Student;
 import com.example.demo.model.mapper.StudentRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -19,7 +20,8 @@ import java.util.Map;
 public class StudentDaoImpl implements StudentDao {
     //NamedParameterJdbcTemplate範例
     @Autowired
-    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+    @Qualifier("myjdbcJdbcTemplate")
+    private NamedParameterJdbcTemplate myjdbcJdbcTemplate;
 
     public Student insertByName(Student student){
         String sql = "INSERT INTO STUDENT (name) VALUE (:name)";
@@ -31,7 +33,7 @@ public class StudentDaoImpl implements StudentDao {
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
-        namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(map), keyHolder);
+        myjdbcJdbcTemplate.update(sql, new MapSqlParameterSource(map), keyHolder);
 
         Integer id = keyHolder.getKey().intValue();
 
@@ -53,7 +55,7 @@ public class StudentDaoImpl implements StudentDao {
             parameterSourceList.add(parameterSource);
         }
         MapSqlParameterSource[] parameterSources = parameterSourceList.toArray( new MapSqlParameterSource[parameterSourceList.size()]);
-        namedParameterJdbcTemplate.batchUpdate(sql, parameterSources);
+        myjdbcJdbcTemplate.batchUpdate(sql, parameterSources);
     }
 
     public void deleteById(Integer id){
@@ -62,14 +64,14 @@ public class StudentDaoImpl implements StudentDao {
         Map<String, Object> map = new HashMap<>();
         map.put("id", id);
 
-        namedParameterJdbcTemplate.update(sql, map);
+        myjdbcJdbcTemplate.update(sql, map);
     }
     public List<Student> findAll(){
         String sql = "SELECT id, name FROM STUDENT";
 
         Map<String,Object> map = new HashMap<>();
 
-        List<Student> list =  namedParameterJdbcTemplate.query(sql, map, new StudentRowMapper());
+        List<Student> list =  myjdbcJdbcTemplate.query(sql, map, new StudentRowMapper());
 
         return list;
     }
@@ -80,7 +82,7 @@ public class StudentDaoImpl implements StudentDao {
         Map<String,Object> map = new HashMap<>();
         map.put("id", id);
 
-        List<Student> list =  namedParameterJdbcTemplate.query(sql, map, new StudentRowMapper());
+        List<Student> list =  myjdbcJdbcTemplate.query(sql, map, new StudentRowMapper());
 
         return list.size() > 0 ? list.get(0) : new Student(null, "查無資料");
     }
