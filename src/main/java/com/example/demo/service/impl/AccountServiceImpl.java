@@ -23,7 +23,8 @@ public class AccountServiceImpl implements AccountService {
         // User A 扣除轉帳金額
         accountDao.decreaseMoney(fromAccountId, money);
 
-        //@Transactional看進入點，accountService2沒有@Transactional。
+        //Transactional看進入點是否有下@Transactional，而會走Transactiona。
+        //accountService2沒有@Transactional。
         //可是進入點有@Transactional一樣會roll back
         accountService2.decreaseMoney(3,1);
         int i = 1/0;

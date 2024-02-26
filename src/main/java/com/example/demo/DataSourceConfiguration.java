@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import javax.sql.DataSource;
 
+//
 @Configuration
 public class DataSourceConfiguration {
 
@@ -53,17 +54,17 @@ public class DataSourceConfiguration {
     }
 
     // 連線到 myjpa 資料庫的 DataSource 和 NamedParameterJdbcTemplate
-    @Bean
-    @ConfigurationProperties(prefix = "spring.datasource.myjpa")
-    public DataSource myjpaDataSource() {
-        return DataSourceBuilder.create().build();
-    }
-
-    @Bean(name = "myjpa")
-    public NamedParameterJdbcTemplate myjpaJdbcTemplate(
-            @Qualifier("myjpaDataSource") DataSource dataSource) {
-        return new NamedParameterJdbcTemplate(dataSource);
-    }
+//    @Bean
+//    @ConfigurationProperties(prefix = "spring.datasource.myjpa")
+//    public DataSource myjpaDataSource() {
+//        return DataSourceBuilder.create().build();
+//    }
+//
+//    @Bean(name = "myjpa")
+//    public NamedParameterJdbcTemplate myjpaJdbcTemplate(
+//            @Qualifier("myjpaDataSource") DataSource dataSource) {
+//        return new NamedParameterJdbcTemplate(dataSource);
+//    }
 
 
 }
