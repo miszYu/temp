@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class TeacherServiceImpl implements TeacherService {
@@ -21,4 +23,18 @@ public class TeacherServiceImpl implements TeacherService {
         return teacherRepostory.save(teacher);
     }
 
+    @Override
+    public Teacher findById(Integer id){
+        return teacherRepostory.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Teacher> findByName(String name){
+        return teacherRepostory.findByName(name);
+    }
+
+    @Override
+    public List<Teacher> findByGender_Stafflv(String gender, String stafflv){
+        return teacherRepostory.findByGender_Stafflv(gender, stafflv);
+    }
 }

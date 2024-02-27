@@ -9,9 +9,9 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import javax.sql.DataSource;
 
-//
+//JdbcTemplate DataSource Configuration
 @Configuration
-public class DataSourceConfiguration {
+public class JdbcTemplateConfiguration {
 
     // 連線到 test1 資料庫的 DataSource 和 NamedParameterJdbcTemplate
     @Bean

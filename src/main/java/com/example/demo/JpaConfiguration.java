@@ -18,11 +18,13 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
+//jpa DataSource Configuration
+
 @Configuration
 @EnableJpaRepositories(
-        basePackages = "com.example.demo.model.dto",
-        basePackageClasses = Teacher.class,
-        repositoryBaseClass = TeacherRepostory.class,
+        basePackages = "com.example.demo",
+//        basePackageClasses = Teacher.class,
+//        repositoryBaseClass = TeacherRepostory.class,
         //指定實體管理工廠的名稱為entityManagerFactory
         entityManagerFactoryRef = "entityManagerFactory",
         //指定事務管理器的名稱為transactionManager
@@ -45,7 +47,7 @@ public class JpaConfiguration {
             EntityManagerFactoryBuilder builder) {
         return builder //
                 .dataSource(dataSource) //
-                .packages(Teacher.class) //
+                .packages("com.example.demo") //
                 .persistenceUnit("myjpa_pU") //
                 .build();
     }
